@@ -1,0 +1,258 @@
+﻿@{
+    ViewData["Title"] = "VolunteerHome";
+}
+
+<!-- Include Lottie Web library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.1/lottie.min.js"></script>
+
+<!-- Lottie full-screen background -->
+<div id="lottie-background" style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-color: black;">
+</div>
+
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1 class="dashboard-title">Welcome to Volunteer Dashboard</h1>
+        <p class="dashboard-subtitle">Manage your volunteer activities and make a difference</p>
+    </div>
+
+    <div class="buttons-grid">
+        <!-- Row 1 -->
+        <div class="button-row">
+            <a href="@Url.Action("Volunteerss", "Home")" class="dashboard-button incident-button">
+                <div class="button-content">
+                    <span class="button-icon">👥</span>
+                    <span class="button-text">Become a Volunteer</span>
+                    <span class="button-description">Update your skills and availability</span>
+                </div>
+            </a>
+
+            <a href="@Url.Action("VolunteerTask", "Home")" class="dashboard-button donation-button">
+                <div class="button-content">
+                    <span class="button-icon">📝</span>
+                    <span class="button-text">Create Volunteer Task</span>
+                    <span class="button-description">Assign tasks to volunteers</span>
+                </div>
+            </a>
+
+        <!-- Row 2 -->
+            <a href="@Url.Action("ViewVolunteerTasks", "Home")" class="dashboard-button view-donations-button">
+                <div class="button-content">
+                    <span class="button-icon">📊</span>
+                    <span class="button-text">View Volunteer Tasks</span>
+                    <span class="button-description">Monitor all tasks</span>
+                </div>
+            </a>
+
+            <a href="@Url.Action("ViewVolunteers", "Home")" class="dashboard-button view-incidents-button">
+                <div class="button-content">
+                    <span class="button-icon">👥</span>
+                    <span class="button-text">View Volunteers</span>
+                    <span class="button-description">See all registered volunteers</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Lottie initialization -->
+<script>
+    var animation = lottie.loadAnimation({
+        container: document.getElementById('lottie-background'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/lottie/Background looping animation.json'
+    });
+</script>
+
+<!-- Keep your existing CSS styles -->
+
+<style>
+    .dashboard-container {
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .dashboard-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .dashboard-title {
+        color: #5DADE2;
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-shadow: 0 2px 10px rgba(93, 173, 226, 0.3);
+    }
+
+    .dashboard-subtitle {
+        color: #AED6F1;
+        font-size: 1.3rem;
+        margin: 0;
+    }
+
+    .buttons-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        width: 100%;
+        max-width: 900px;
+    }
+
+    .button-row {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+    }
+
+    .dashboard-button {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 40px 30px;
+        text-decoration: none;
+        color: white;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .dashboard-button:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+        }
+
+    .button-content {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .button-icon {
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
+
+    .button-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .button-description {
+        font-size: 1rem;
+        opacity: 0.8;
+        margin: 0;
+    }
+
+    /* Individual button color schemes */
+    .incident-button {
+        background: linear-gradient(135deg, rgba(255, 87, 87, 0.15), rgba(255, 87, 87, 0.05));
+        border-color: rgba(255, 87, 87, 0.3);
+    }
+
+        .incident-button:hover {
+            background: linear-gradient(135deg, rgba(255, 87, 87, 0.25), rgba(255, 87, 87, 0.15));
+            border-color: rgba(255, 87, 87, 0.6);
+        }
+
+    .donation-button {
+        background: linear-gradient(135deg, rgba(26, 199, 130, 0.15), rgba(26, 199, 130, 0.05));
+        border-color: rgba(26, 199, 130, 0.3);
+    }
+
+        .donation-button:hover {
+            background: linear-gradient(135deg, rgba(26, 199, 130, 0.25), rgba(26, 199, 130, 0.15));
+            border-color: rgba(26, 199, 130, 0.6);
+        }
+
+    .view-incidents-button {
+        background: linear-gradient(135deg, rgba(93, 173, 226, 0.15), rgba(93, 173, 226, 0.05));
+        border-color: rgba(93, 173, 226, 0.3);
+    }
+
+        .view-incidents-button:hover {
+            background: linear-gradient(135deg, rgba(93, 173, 226, 0.25), rgba(93, 173, 226, 0.15));
+            border-color: rgba(93, 173, 226, 0.6);
+        }
+
+    .view-donations-button {
+        background: linear-gradient(135deg, rgba(174, 214, 241, 0.15), rgba(174, 214, 241, 0.05));
+        border-color: rgba(174, 214, 241, 0.3);
+    }
+
+        .view-donations-button:hover {
+            background: linear-gradient(135deg, rgba(174, 214, 241, 0.25), rgba(174, 214, 241, 0.15));
+            border-color: rgba(174, 214, 241, 0.6);
+        }
+
+    /* Responsive design */
+    @@media (max-width: 768px) {
+        .button-row {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .dashboard-button {
+            min-height: 150px;
+            padding: 30px 20px;
+        }
+
+        .dashboard-title {
+            font-size: 2.2rem;
+        }
+
+        .button-text {
+            font-size: 1.3rem;
+        }
+
+        .button-icon {
+            font-size: 2.5rem;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .dashboard-container {
+            padding: 20px 15px;
+        }
+
+        .dashboard-title {
+            font-size: 1.8rem;
+        }
+
+        .dashboard-subtitle {
+            font-size: 1.1rem;
+        }
+
+        .button-text {
+            font-size: 1.1rem;
+        }
+
+        .button-description {
+            font-size: 0.9rem;
+        }
+    }
+</style>
